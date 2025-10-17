@@ -1,12 +1,10 @@
 # Portfolio Part 1: Component Brainstorming
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment -->
-- **Due Date**: <!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->
+- **Name**: Parker Marcum
+- **Dot Number**: marcum.324
+- **Due Date**: 10/10/25
 
 ## Assignment Overview
-
-<!-- TODO: read the assignment overview then delete this comment -->
 
 The overall goal of the portfolio project is to have you design and implement
 your own OSU component. There are no limits to what you choose to design and
@@ -29,8 +27,6 @@ implement.
 
 ## Assignment Checklist
 
-<!-- TODO: browse the checklist then delete this comment -->
-
 To be sure you have completed everything on this assignment, we have littered
 this document with TODO comments. You can browse all of them in VSCode by
 opening the TODOs window from the sidebar. The icon looks like a tree and will
@@ -52,8 +48,6 @@ to the tree diagram (you may remove this one as well):
 
 ## Assignment Learning Objectives
 
-<!-- TODO: read the assignment learning objectives then delete this comment -->
-
 Without learning objectives, there really is no clear reason why a particular
 assessment or activity exists. Therefore, to be completely transparent, here is
 what we're hoping you will learn through this particular aspect of the portfolio
@@ -66,8 +60,6 @@ project. Specifically, students should be able to:
    discipline
 
 ## Assignment Rubric: 10 Points
-
-<!-- TODO: read the assignment rubric then delete this comment -->
 
 Again, to be completely transparent, most of the portfolio project, except the
 final submission, is designed as a formative assessment. Formative assessments
@@ -106,23 +98,16 @@ Below is further rationale/explanation for the rubric items above:
 > brainstorming. Plus it helps us get to know you better! Feel free to share
 > images in this section.
 
-<!-- TODO: briefly talk about your interests then delete this comment.
-Also, protip: you can preview what your response looks like by hitting
-the magnifying glass icon in the upper-right corner or pressing CTRL+K and
-then V. This kind of button combination is called a chord, for whatever
-reason -->
+I have many interests in general, but in the computer field I am interested in both hardware and software. Outside of class I am trying to learn c and circuitry/electronics. I am a cse major and the specialization is computer systems. As far as hobbies go, I like to bake, read, and play games. For my career I think I would like to work on embedded systems or some other skill that works close to or directly on hardware.
+
 
 ## Assignment
-
-<!-- TODO: read the assignment section then delete this comment -->
 
 As previously stated, you are tasked with brainstorming 3 possible components.
 To aid you in this process, we have provided [some example components][example-components]
 that may help you in your brainstorming. All of these components were made at
 some point by one of your peers, so you should feel confident that you can
 accomplish any of them.
-
-<!-- TODO: browse the list of possible projects then delete this comment -->
 
 There is no requirement that you use any of the components listed above.
 If you want to model something else, go for it! Very common early object
@@ -131,8 +116,6 @@ etc. Make of this whatever seems interesting to you, and keep in mind that
 you're just brainstorming right now. You do not have to commit to anything.
 
 ### Example Component
-
-<!-- TODO: review this example component then delete this comment -->
 
 To help you brainstorm a few components, we've provided an example below of a
 component you already know well: NaturalNumber. We highly recommend that you
@@ -200,68 +183,84 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: <!-- TODO: give component a name then delete this comment -->
+- Component Design #1: logicGates
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - The purpose of this component is to model the values that will be output from one of the the five logic gates: AND, OR, NOR, NAND, and XOR. The intent is that any gate can take compute the logic of two inputs, with the inputs being some combination of true or false. Furthermore, this can be stacked to model the output of multiple logic gates both in series and in parallel.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - `boolean XOR(boolean x, boolean y)`: computes the XOR logic of two inputs
+    - `boolean OR(boolean x, boolean y)`: computes the OR logic of two inputs
+    - `boolean NOR(boolean x, boolean y)`: computes the NOR logic of two inputs
+    - `boolean AND(boolean x, boolean y)`: computes the AND logic of two inputs
+    - `boolean NAND(boolean x, boolean y)`: computes the NAND logic of two inputs
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - `void addInSeries(logicGates l)`: adds `l` into `this`
+    - `logicGates removeFromSeries(logicGates l)`: remove `l` from `this`
+    - `boolean compute()`: computes `this` and outputs the value.
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, otherwise it would be to output into multiple logic gates.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Maybe, it's hard to imagine it right now, but from my knowledge I'd wager it won't.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Probably not in the current state since all the booleans will come from the input.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I think so, since it's just storing the logic gates you want to do, then when you compute you do them. For example, if I already have the XOR gate in `this` and I add AND, I will just take the output from XOR and input it into AND when the compute method is run.
 
-- Component Design #2: <!-- TODO: give component a name then delete this comment -->
+- Component Design #2: timerClock
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - Will increment every second unless stopped, and will update minutes and hours. Will run on the 24-hour system.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - `void incrementSeconds()`: will increment seconds
+    - `void incrementMinutes()`: will increment minutes
+    - `void incrementHours()`: will increment hours
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - `void stop()`: will stop the incrementing
+    - `void start()`: will start/continue the incrementing
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes since the time is constantly changing
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - No, this is pretty simple
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, it will need constants for the cutoffs of minutes and seconds as well as hours
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Pretty easily, stop will just stop doing the incrementing and start will continue it.
 
-- Component Design #3: <!-- TODO: give component a name then delete this comment -->
+- Component Design #3: baseConverter
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - This component will convert from binary, decimal, and hexadecimal to any of the other one.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - `void decimalToBinary(int d)`: will take `d` and will store it in binary
+    - `void hexaToBinary(string h)`: will take `h` and store it in binary
+    - `string binaryToHexa(int b)`: will take `b` and output it as hexadecimal
+    - `int binaryToDecimal(int b)`: will take `b` and output it as decimal
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - `string decimalToHexa(int d)`: will convert `d` into hexadecimal and output it as a string
+    - `int hexaToDecimal(string h)`: will convert `h` into decimal and output it as an int
+    - `void storeDecimal(int d)`: will store `d` in `this`
+    - `void storeHexa(string h)`: will store `h` in `this`
+    - `void storeBinary(int b)`: will store `b` in `this`
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes so that it can store multiple lines of hexa, binary, and decimal.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Probably not, although that may change depending on how the data needs to be dealt with
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I don't think so, but maybe it will be necessary in the conversions.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Sure, for example, decimalToHexa will just do decimalToBinary then BinaryToHexa
 
 ## Post-Assignment
 
@@ -269,8 +268,6 @@ The following sections detail everything that you should do once you've
 completed the assignment.
 
 ### Changelog
-
-<!-- TODO: create CHANGELOG then delete this comment -->
 
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.
@@ -309,8 +306,6 @@ of development.
 
 ### Submission
 
-<!-- TODO: read the submission instructions then delete this comment -->
-
 If you have completed the assignment using this template, we recommend that
 you convert it to a PDF before submission. If you're not sure how, check out
 this [Markdown to PDF guide][markdown-to-pdf-guide]. However, PDFs should be
@@ -319,11 +314,7 @@ all your work is there before submitting. For future assignments, you will
 just be submitting a link to a pull request. This will be the only time
 you have to submit any PDFs.
 
-<!-- TODO: upload a PDF of this document and the CHANGELOG to Carmen then delete this comment -->
-
 ### Peer Review
-
-<!-- TODO: review the peer review guidelines then delete this comment -->
 
 Following the completion of this assignment, you will be assigned three
 students' component brainstorming assignments for review. Your job during the
@@ -349,8 +340,6 @@ PDF to read this rubric as a table).
 If you'd like to give feedback for this assignment (or any assignment, really),
 make use of [this survey][survey]. Your feedback helps make assignments
 better for future students.
-
-<!-- TODO: follow the link to share your feedback then delete this comment -->
 
 [example-components]: https://therenegadecoder.com/code/the-never-ending-list-of-small-programming-project-ideas/
 [markdown-to-pdf-guide]: https://therenegadecoder.com/blog/how-to-convert-markdown-to-a-pdf-3-quick-solutions/
