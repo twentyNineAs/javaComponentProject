@@ -14,7 +14,7 @@ the following form: YYYY.0M.0D.
 
 ### Updated
 
-- Changed design to better model complex logical gate sequences by implementing design choices similar to binary trees.
+- Changed design to better model complex logic gate sequences through binary tree structures.
 
 ## 2025.10.17
 
