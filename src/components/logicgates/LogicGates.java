@@ -12,7 +12,7 @@ public interface LogicGates extends LogicGatesKernel {
      * @requires this \= empty
      * @ensures this = compose(operator, left, right)
      */
-    String operator();
+    Operator operator();
 
     /**
      * Replaces the operator of {@code this} with {@code op}, and returns the
@@ -25,13 +25,21 @@ public interface LogicGates extends LogicGatesKernel {
      * @ensures (this = compose(op, left, right) and #this =
      *          compose(replaceOperator, left, right))
      */
-    String replaceOperator(String op);
+    Operator replaceOperator(Operator op);
 
     /**
-     * Returns the height of {@code this}.
+     * Replace one of the inputs of {@code this} with {@code newInput}, and
+     * returns the old input. Determines which input to change by value of
+     * {@code leftGate}, with true being left and false being right.
      *
-     * @return the height
-     * @ensures height = ht(this)
+     * @param newInput
+     *            the new input
+     * @param leftGate
+     *            whether to replace left or right input
+     * @return the old input
+     * @requires this \= empty
+     * @ensures (this = compose(op, newInput, right) OR this = compose(op, left,
+     *          newInput))
      */
-    int height();
+    LogicGates replaceInput(LogicGates newInput, boolean leftGate);
 }
