@@ -6,26 +6,27 @@ import components.standard.Standard;
  * Logic Gates kernel component with its primary methods.
  */
 public interface LogicGatesKernel extends Standard<LogicGates> {
+    enum Operator {
+        NEG, OR, AND, XOR, NOR, NAND
+    }
 
     /**
-     * Assembles in {@code this} a logic gate {@code operator} and input values
+     * Assembles in {@code this} a logic gate {@code Operator} and input values
      * {@code first} and {@code second}.
      *
-     * @param operator
+     * @param op
      *            the logical operator
      * @param first
      *            the first input value
      * @param second
      *            the second input value
-     * @requires operation to be equal to one of the following operators: {AND;
-     *           OR; NAND; NOR; XOR; NEG}
      * @replaces this
      * @ensures this = compose(operator, first, second);
      */
-    void assemble(String operator, boolean first, boolean second);
+    void assemble(Operator op, LogicGates first, LogicGates second);
 
     /**
-     * Disassembles {@code this} into the logic gate {@code operator}, which is
+     * Disassembles {@code this} into the logic gate {@code Operator}, which is
      * returned as the value of the function, and input values {@code first} and
      * {@code second}.
      *
@@ -38,7 +39,7 @@ public interface LogicGatesKernel extends Standard<LogicGates> {
      * @requires this /= empty
      * @ensures this = compose(disassemble, first, second);
      */
-    String disassemble(boolean first, boolean second);
+    Operator disassemble(LogicGates first, LogicGates second);
 
     /**
      * Computes the final boolean value for the entirety of {@code this}, and
@@ -56,4 +57,12 @@ public interface LogicGatesKernel extends Standard<LogicGates> {
      * @ensures size = |this|
      */
     int size();
+
+    /**
+     * Returns the height of {@code this}.
+     *
+     * @return the height
+     * @ensures height = ht(this)
+     */
+    int height();
 }

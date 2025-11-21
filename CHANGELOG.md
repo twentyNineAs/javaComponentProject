@@ -6,9 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
 the following form: YYYY.0M.0D.
 
-<<<<<<< Updated upstream
-=======
-## 2025.11.07
+## 2025.11.21
 
 ### Added
 
@@ -16,9 +14,7 @@ the following form: YYYY.0M.0D.
 
 ### Updated
 
-- Removed LogicGatesProof.java.
-- Changed LogicGates1 to LogicGatesTree.
-
+-
 
 ## 2025.11.07
 
@@ -34,7 +30,6 @@ the following form: YYYY.0M.0D.
 - Changed design to make inputs for disassembling and assembling to LogicGates components. This is to better mimic binary tree behavior.
 - Moved height method out of secondary and into kernel.
 
->>>>>>> Stashed changes
 ## 2025.10.18
 
 ### Added
