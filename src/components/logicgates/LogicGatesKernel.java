@@ -48,15 +48,6 @@ public interface LogicGatesKernel extends Standard<LogicGates> {
     Operator disassemble(LogicGates first, LogicGates second);
 
     /**
-     * Computes the final boolean value for the entirety of {@code this}, and
-     * returns said boolean.
-     *
-     * @return the final boolean value
-     * @ensures compute = compute(first) operator compute(second)
-     */
-    boolean compute();
-
-    /**
      * Returns the size of {@code this}.
      *
      * @return the size
