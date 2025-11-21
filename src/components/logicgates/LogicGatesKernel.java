@@ -6,7 +6,13 @@ import components.standard.Standard;
  * Logic Gates kernel component with its primary methods.
  */
 public interface LogicGatesKernel extends Standard<LogicGates> {
+    /**
+     * Logic Operators to be used for the Gates.
+     */
     enum Operator {
+        /**
+         * Negative, Or, And, Exclusive Or, Not Or, Not And Operators.
+         */
         NEG, OR, AND, XOR, NOR, NAND
     }
 

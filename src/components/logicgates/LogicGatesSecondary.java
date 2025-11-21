@@ -1,7 +1,7 @@
 package components.logicgates;
 
 /**
- * Layered implementations of secondary methods for {@code LogicGates}
+ * Layered implementations of secondary methods for {@code LogicGates}.
  */
 public abstract class LogicGatesSecondary implements LogicGates {
 
@@ -13,6 +13,9 @@ public abstract class LogicGatesSecondary implements LogicGates {
      * Common methods (from Object) -------------------------------------------
      */
 
+    /**
+     * toString Method.
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -33,6 +36,9 @@ public abstract class LogicGatesSecondary implements LogicGates {
         return sb.toString();
     }
 
+    /**
+     * equals Method.
+     */
     @Override
     public final boolean equals(Object obj) {
         boolean equals = false;
@@ -42,7 +48,7 @@ public abstract class LogicGatesSecondary implements LogicGates {
         if (obj.getClass() != this.getClass()) {
             equals = false;
         } else {
-            if (this.toString().equals(obj.toString())) {
+            if (this.hashCode() == obj.hashCode()) {
                 equals = true;
             }
         }
@@ -50,10 +56,39 @@ public abstract class LogicGatesSecondary implements LogicGates {
         return equals;
     }
 
+    /**
+     * hashCode Method.
+     */
+    @Override
+    public int hashCode() {
+        int hash = 1;
+        final int prime = 79;
+
+        if (this.size() > 0) {
+            boolean compute = this.compute();
+            hash = hash * prime + Boolean.hashCode(compute);
+            LogicGates left = this.newInstance();
+            LogicGates right = this.newInstance();
+            Operator op = this.disassemble(left, right);
+            hash = hash + left.hashCode();
+            hash = hash + right.hashCode();
+            this.assemble(op, left, right);
+        }
+
+        return hash;
+    }
+
     /*
      * Other non-kernel methods -----------------------------------------------
      */
 
+    /**
+     * Reports the operator of {@code this}.
+     *
+     * @return the operator of {@code this}
+     * @requires this \= empty
+     * @ensures this = compose(operator, left, right)
+     */
     @Override
     public Operator operator() {
         assert this.size() != 0;
@@ -66,6 +101,17 @@ public abstract class LogicGatesSecondary implements LogicGates {
         return op;
     }
 
+    /**
+     * Replaces the operator of {@code this} with {@code op}, and returns the
+     * old operator.
+     *
+     * @param op
+     *            the new operator
+     * @return the old operator
+     * @requires this \= empty
+     * @ensures (this = compose(op, left, right) and #this =
+     *          compose(replaceOperator, left, right))
+     */
     @Override
     public Operator replaceOperator(Operator op) {
         assert this.size() != 0;
@@ -78,6 +124,20 @@ public abstract class LogicGatesSecondary implements LogicGates {
         return oldOp;
     }
 
+    /**
+     * Replace one of the inputs of {@code this} with {@code newInput}, and
+     * returns the old input. Determines which input to change by value of
+     * {@code leftGate}, with true being left and false being right.
+     *
+     * @param newInput
+     *            the new input
+     * @param leftGate
+     *            whether to replace left or right input
+     * @return the old input
+     * @requires this \= empty
+     * @ensures (this = compose(op, newInput, right) OR this = compose(op, left,
+     *          newInput))
+     */
     @Override
     public LogicGates replaceInput(LogicGates newInput, boolean leftGate) {
         assert this.size() != 0;
@@ -87,11 +147,11 @@ public abstract class LogicGatesSecondary implements LogicGates {
         if (leftGate) {
             LogicGates right = new LogicGatesTree();
             Operator op = this.disassemble(oldIn, right);
-            this.assemble(op, oldIn, right);
+            this.assemble(op, newInput, right);
         } else {
             LogicGates left = new LogicGatesTree();
             Operator op = this.disassemble(left, oldIn);
-            this.assemble(op, left, oldIn);
+            this.assemble(op, left, newInput);
         }
 
         return oldIn;

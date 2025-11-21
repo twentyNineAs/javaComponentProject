@@ -10,11 +10,14 @@ the following form: YYYY.0M.0D.
 
 ### Added
 
--
+- HashCode Method implemented.
+- Implementations to kernel and standard methods.
+- Added no arg constructor.
+- Added convention and correspondance for LogicGatesTree.
 
 ### Updated
 
--
+- Equals Method now uses hashCode to confirm equality.
 
 ## 2025.11.07
 
