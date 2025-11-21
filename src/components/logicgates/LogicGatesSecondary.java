@@ -156,4 +156,44 @@ public abstract class LogicGatesSecondary implements LogicGates {
 
         return oldIn;
     }
+
+    /**
+     * Computes the final boolean value for the entirety of {@code this}, and
+     * returns said boolean.
+     *
+     * @return the final boolean value
+     * @ensures compute = compute(first) operator compute(second)
+     */
+    @Override
+    public boolean compute() {
+        boolean computation = false;
+
+        if (this.size() > 0) {
+            LogicGates leftGate = this.newInstance();
+            LogicGates rightGate = this.newInstance();
+            Operator operator = this.disassemble(leftGate, rightGate);
+            switch (operator) {
+                case AND:
+                    computation = leftGate.compute() && rightGate.compute();
+                    break;
+                case OR:
+                    computation = leftGate.compute() || rightGate.compute();
+                    break;
+                case XOR:
+                    computation = leftGate.compute() ^ rightGate.compute();
+                    break;
+                case NAND:
+                    computation = !(leftGate.compute() && rightGate.compute());
+                    break;
+                case NOR:
+                    computation = !(leftGate.compute() || rightGate.compute());
+                    break;
+                default:
+                    break;
+            }
+            this.assemble(operator, leftGate, rightGate);
+        }
+
+        return computation;
+    }
 }

@@ -18,6 +18,7 @@ the following form: YYYY.0M.0D.
 ### Updated
 
 - Equals Method now uses hashCode to confirm equality.
+- Moved compute out of kernel and into secondary.
 
 ## 2025.11.07
 
